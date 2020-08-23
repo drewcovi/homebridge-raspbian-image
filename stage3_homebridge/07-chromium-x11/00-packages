@@ -1,5 +1,5 @@
-server-xorg-video-fbdev
-server-xorg xinit
+xserver-xorg-video-fbdev
+xserver-xorg xinit
 xterm x11-xserver-utils
 xterm
 xserver-xorg-input-evdev

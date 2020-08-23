@@ -33,7 +33,13 @@ fi
 if [[ -z ${FLAGS+x} ]]
   then
     echo "Using default chromium flags"
-    export FLAGS=" $KIOSK --disable-dev-shm-usage --ignore-gpu-blacklist --enable-gpu-rasterization --force-gpu-rasterization --autoplay-policy=no-user-gesture-required --user-data-dir=/usr/src/app/settings --enable-features=WebRTC-H264WithOpenH264FFmpeg"
+    export FLAGS=" $KIOSK --disable-dev-shm-usage --ignore-gpu-blacklist \
+      --enable-gpu-rasterization \
+      --force-gpu-rasterization \
+      --autoplay-policy=no-user-gesture-required \
+      --user-data-dir=/usr/src/app/settings \
+      --enable-features=WebRTC-H264WithOpenH264FFmpeg"
+
 fi
 
 # if no window size has been specified, find the framebuffer size and use that
