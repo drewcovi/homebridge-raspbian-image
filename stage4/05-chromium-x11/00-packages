@@ -1,0 +1,12 @@
+server-xorg-video-fbdev
+server-xorg xinit
+xterm x11-xserver-utils
+xterm
+xserver-xorg-input-evdev
+xserver-xorg-legacy
+mesa-vdpau-drivers
+chromium-browser
+rpi-chromium-mods
+libgles2-mesa
+lsb-release
+cec-utils
