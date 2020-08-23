@@ -7,7 +7,7 @@ After=graphical.target
 Environment=DISPLAY=:0.0
 Environment=XAUTHORITY=/home/chromium/.Xauthority
 Type=simple
-ExecStart=/bin/bash /home/chromium/xstart.sh
+ExecStart=/home/chromium/start
 Restart=on-abort
 User=chromium
 Group=chromium

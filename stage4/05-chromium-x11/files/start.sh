@@ -44,22 +44,22 @@ if [[ -z ${WINDOW_SIZE+x} ]]
 fi
 
 # Start Tohora
-cd /home/chromium/tohora && ./tohora 8080 /home/chromium/launch.sh &
+cd /home/chromium/tohora && ./tohora 8080 /home/chromium/tohora.sh &
 # wait for it
 sleep 3
 
-if [ ! -z ${CONTROL_TV+x} ] && [ "$CONTROL_TV" -eq "1" ]
-  then
-    #Set the TV input to the Pi
-    echo 'as' | cec-client -s -d 1
-fi
+# if [ ! -z ${CONTROL_TV+x} ] && [ "$CONTROL_TV" -eq "1" ]
+#   then
+#     #Set the TV input to the Pi
+#     echo 'as' | cec-client -s -d 1
+# fi
+
 
 if [[ ! -z ${LAUNCH_URL+x} ]]
   then
     sleep 5
     wget --post-data "url=$LAUNCH_URL" http://localhost:8080/launch/ >/dev/null 2>&1
 fi
-
 
 tail -f /dev/null
 
