@@ -50,7 +50,7 @@ if [[ -z ${WINDOW_SIZE+x} ]]
 fi
 
 # Start Tohora
-cd /home/chromium/tohora && ./tohora 8080 /home/chromium/tohora.sh &
+/usr/local/sbin/tohora 8080 /usr/local/lib/kiosk/launch &
 # wait for it
 sleep 3
 
