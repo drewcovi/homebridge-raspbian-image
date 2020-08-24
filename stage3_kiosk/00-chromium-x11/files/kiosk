@@ -1,7 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 export CONFIG_MODE=0
-export LAUNCH_URL=127.0.0.1
+export LAUNCH_URL=http://127.0.0.1
 export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 #export WINDOW_SIZE=
 #export FLAGS=
@@ -13,9 +13,10 @@ if [ "$(vcgencmd get_mem gpu | grep -o '[0-9]\+')" -lt 128 ]
     echo -e "\033[91mWARNING: GPU MEMORY TOO LOW"
 fi
 
-sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+#sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+echo "allowed_users=anybody" >/etc/X11/Xwrapper.config
 echo "needs_root_rights=yes" >> /etc/X11/Xwrapper.config
-dpkg-reconfigure xserver-xorg-legacy
+#dpkg-reconfigure xserver-xorg-legacy
 
 #Set whether to run Chromium in config mode or not
 if [ ! -z ${CONFIG_MODE+x} ] && [ "$CONFIG_MODE" -eq "1" ]
@@ -37,7 +38,7 @@ if [[ -z ${FLAGS+x} ]]
       --enable-gpu-rasterization \
       --force-gpu-rasterization \
       --autoplay-policy=no-user-gesture-required \
-      --user-data-dir=/usr/src/app/settings \
+      --user-data-dir=/usr/local/lib/kiosk/settings \
       --enable-features=WebRTC-H264WithOpenH264FFmpeg"
 
 fi
@@ -50,7 +51,7 @@ if [[ -z ${WINDOW_SIZE+x} ]]
 fi
 
 # Start Tohora
-cd /home/chromium/tohora && ./tohora 8080 /home/chromium/tohora.sh &
+/usr/local/sbin/tohora 8080 /usr/local/lib/kiosk/launch &
 # wait for it
 sleep 3
 
