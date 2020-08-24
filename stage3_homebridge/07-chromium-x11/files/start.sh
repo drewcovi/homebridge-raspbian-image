@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 export CONFIG_MODE=0
 export LAUNCH_URL=127.0.0.1
