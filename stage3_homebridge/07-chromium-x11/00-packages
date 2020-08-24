@@ -9,7 +9,7 @@ xserver-xorg-input-evdev
 xserver-xorg-legacy
 mesa-vdpau-drivers
 chromium-browser
-
+rpi-chromium-mods
 lsb-release
 cec-utils
 libgles2-mesa
