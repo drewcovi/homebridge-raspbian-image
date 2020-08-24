@@ -44,9 +44,8 @@ rm -rf /root/go/src
 
 usermod -a -G audio,video,tty pi
 
-chown pi:pi /usr/local/sbin/kiosk
-chown pi:pi /usr/local/share/xstart
-
+# chown pi:pi /usr/local/sbin/kiosk
+# chown pi:pi /usr/local/share/xstart
 
 systemctl daemon-reload
 systemctl enable kiosk
