@@ -1,8 +1,10 @@
 #!/bin/bash -e 
 
+
 #
 # Install kiosk
 #
+
 
 install -m 644 files/kiosk.service "${ROOTFS_DIR}/etc/systemd/system/"
 
@@ -50,4 +52,3 @@ usermod -a -G audio,video,tty pi
 systemctl daemon-reload
 systemctl enable kiosk
 EOF
-
