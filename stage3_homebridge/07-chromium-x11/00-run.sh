@@ -10,7 +10,7 @@ install -m 644 files/kiosk.service "${ROOTFS_DIR}/etc/systemd/system/"
 
 # install -v -d "${ROOTFS_DIR}/usr/local/share/kiosk"
 install -v -d "${ROOTFS_DIR}/usr/src/app/settings"
-install -v -d "${ROOTFS_DIR}/usr/lib/kiosk"
+install -v -d "${ROOTFS_DIR}/usr/local/lib/kiosk"
 
 install -m 644 files/45-evdev.conf "${ROOTFS_DIR}/usr/share/X11/xorg.conf.d/"
 # udev rule to set specific permissions 
