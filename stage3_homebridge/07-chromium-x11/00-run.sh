@@ -12,21 +12,22 @@ install -m 644 files/kiosk.service "${ROOTFS_DIR}/etc/systemd/system/"
 install -v -d "${ROOTFS_DIR}/usr/src/app/settings"
 install -v -d "${ROOTFS_DIR}/usr/local/lib/kiosk"
 
-install -m 644 files/45-evdev.conf "${ROOTFS_DIR}/usr/share/X11/xorg.conf.d/"
+install -v -m 644 files/45-evdev.conf "${ROOTFS_DIR}/usr/share/X11/xorg.conf.d/"
 # udev rule to set specific permissions 
-install -m 644 files/10-vchiq-permissions.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
-install -m 644 files/xstart "${ROOTFS_DIR}/usr/local/lib/kiosk/"
-install -m 644 files/launch "${ROOTFS_DIR}/usr/local/lib/kiosk/"
-install -m 755 files/kiosk "${ROOTFS_DIR}/usr/local/sbin/"
+install -v -m 644 files/10-vchiq-permissions.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
+install -v -m 644 files/xstart "${ROOTFS_DIR}/usr/local/lib/kiosk/"
+install -v -m 644 files/launch "${ROOTFS_DIR}/usr/local/lib/kiosk/"
+install -v -m 755 files/kiosk "${ROOTFS_DIR}/usr/local/sbin/"
 
 on_chroot << EOF
 set -x 
 
 # Install Golang
 GOLANG="$(curl -k https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
-wget https://golang.org/dl/$GOLANG
-sudo tar -C /usr/local -xzf $GOLANG
-rm $GOLANG
+echo "GOLANG IS: $GOLANG"
+wget "https://golang.org/dl/${GOLANG}"
+sudo tar -C /usr/local -xzf "${GOLANG}"
+rm "${GOLANG}"
 unset GOLANG
 
 # Build tohora
