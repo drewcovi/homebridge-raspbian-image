@@ -19,11 +19,13 @@ install -v -m 644 files/xstart "${ROOTFS_DIR}/usr/local/lib/kiosk/"
 install -v -m 644 files/launch "${ROOTFS_DIR}/usr/local/lib/kiosk/"
 install -v -m 755 files/kiosk "${ROOTFS_DIR}/usr/local/sbin/"
 
+export GOLANG="$(curl -k https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
+
 on_chroot << EOF
 set -x 
 
 # Install Golang
-export GOLANG="$(curl -k https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
+
 if [ -z ${GOLANG+x} ]; then echo "GOLANG is unset"; else echo "var is set to '$GOLANG'"; fi
 echo "GOLANG IS: ${GOLANG}"
 wget "https://golang.org/dl/${GOLANG}"
