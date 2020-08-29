@@ -19,7 +19,7 @@ install -v -m 644 files/xstart "${ROOTFS_DIR}/usr/local/lib/kiosk/"
 install -v -m 644 files/launch "${ROOTFS_DIR}/usr/local/lib/kiosk/"
 install -v -m 755 files/kiosk "${ROOTFS_DIR}/usr/local/sbin/"
 
-export GOROOT="${ROOTFS_DIR}/root/go"
+export GOROOT="/root/go"
 export GOLANG="$(curl -k https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
 
 on_chroot << EOF
