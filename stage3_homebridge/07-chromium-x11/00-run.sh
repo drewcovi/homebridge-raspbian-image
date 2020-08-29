@@ -34,8 +34,6 @@ sudo tar -C /usr/local -xzvf "${GOLANG}"
 rm "${GOLANG}"
 unset GOLANG
 
-which go
-
 # Build tohora
 /usr/local/go/bin/go get -d -v github.com/mozz100/tohora/...
 cd "/root/go/src/github.com/mozz100/tohora"
