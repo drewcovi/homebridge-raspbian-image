@@ -23,8 +23,9 @@ on_chroot << EOF
 set -x 
 
 # Install Golang
-GOLANG="$(curl -k https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
-echo "GOLANG IS: $GOLANG"
+export GOLANG="$(curl -k https://golang.org/dl/|grep armv6l|grep -v beta|head -1|awk -F\> {'print $3'}|awk -F\< {'print $1'})"
+if [ -z ${GOLANG+x} ]; then echo "GOLANG is unset"; else echo "var is set to '$GOLANG'"; fi
+echo "GOLANG IS: ${GOLANG}"
 wget "https://golang.org/dl/${GOLANG}"
 sudo tar -C /usr/local -xzf "${GOLANG}"
 rm "${GOLANG}"
