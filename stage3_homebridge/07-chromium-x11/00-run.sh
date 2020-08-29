@@ -29,7 +29,7 @@ set -x
 if [ -z ${GOLANG+x} ]; then echo "GOLANG is unset"; else echo "var is set to '$GOLANG'"; fi
 echo "GOLANG IS: ${GOLANG}"
 wget "https://golang.org/dl/${GOLANG}"
-sudo tar -C /usr/local -xzfv "${GOLANG}"
+sudo tar -C /usr/local -xzvf "${GOLANG}"
 rm "${GOLANG}"
 unset GOLANG
 
