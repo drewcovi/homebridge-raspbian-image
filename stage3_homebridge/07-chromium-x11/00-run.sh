@@ -29,9 +29,11 @@ set -x
 if [ -z ${GOLANG+x} ]; then echo "GOLANG is unset"; else echo "var is set to '$GOLANG'"; fi
 echo "GOLANG IS: ${GOLANG}"
 wget "https://golang.org/dl/${GOLANG}"
-sudo tar -C /usr/local -xzf "${GOLANG}"
+sudo tar -C /usr/local -xzfv "${GOLANG}"
 rm "${GOLANG}"
 unset GOLANG
+
+which go
 
 # Build tohora
 /usr/local/go/bin/go get -d -v github.com/mozz100/tohora/...
