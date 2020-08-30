@@ -43,19 +43,19 @@ cd "/root/go/src/github.com/mozz100/tohora"
 
 
 # # Add chromium user
-# useradd chromium -m -s /bin/bash -G root && \
-#     groupadd -r -f chromium && id -u chromium \
-#     && chown -R chromium:chromium /home/chromium
+useradd chromium -m -s /bin/bash -G root && \
+    groupadd -r -f chromium && id -u chromium \
+    && chown -R chromium:chromium /home/chromium
 
 # Move tohora to sbin
 cp "/root/go/src/github.com/mozz100/tohora/tohora" /usr/local/sbin/
 cp -r "/root/go/src/github.com/mozz100/tohora/templates" /usr/local/lib/kiosk/
 rm -rf /root/go/src
 
-usermod -a -G audio,video,tty pi
+usermod -a -G audio,video,tty chromium
 
-# chown pi:pi /usr/local/sbin/kiosk
-# chown pi:pi /usr/local/share/xstart
+chown chromium:chromium /usr/local/sbin/kiosk
+chown -R chromium:chromium /usr/local/lib/kiosk
 
 systemctl daemon-reload
 systemctl enable kiosk
