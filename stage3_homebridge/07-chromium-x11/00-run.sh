@@ -16,8 +16,8 @@ install -v -d "${ROOTFS_DIR}/root/go"
 install -v -m 644 files/45-evdev.conf "${ROOTFS_DIR}/usr/share/X11/xorg.conf.d/"
 # udev rule to set specific permissions 
 install -v -m 644 files/10-vchiq-permissions.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
-install -v -m 644 files/xstart "${ROOTFS_DIR}/usr/local/lib/kiosk/"
-install -v -m 644 files/launch "${ROOTFS_DIR}/usr/local/lib/kiosk/"
+install -v -m 755 files/xstart "${ROOTFS_DIR}/usr/local/lib/kiosk/"
+install -v -m 755 files/launch "${ROOTFS_DIR}/usr/local/lib/kiosk/"
 install -v -m 755 files/kiosk "${ROOTFS_DIR}/usr/local/sbin/"
 
 export GOPATH="/root/go"
@@ -49,6 +49,7 @@ cd "/root/go/src/github.com/mozz100/tohora"
 
 # Move tohora to sbin
 cp "/root/go/src/github.com/mozz100/tohora/tohora" /usr/local/sbin/
+cp -r "/root/go/src/github.com/mozz100/tohora/templates" /usr/local/lib/kiosk/
 rm -rf /root/go/src
 
 usermod -a -G audio,video,tty pi
