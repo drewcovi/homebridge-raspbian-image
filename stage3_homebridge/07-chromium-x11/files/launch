@@ -4,7 +4,7 @@ pkill xinit
 sleep 3
 
 # delete the last line in xstart script and replace with new settings
-sed -i '$d' /usr/local/share/xstart
+sed -i '$d' /usr/local/lib/kiosk/xstart
 
 #Set whether to show a cursor or not
 if [[ ! -z $SHOW_CURSOR ]] && [[ "$SHOW_CURSOR" -eq "1" ]]
