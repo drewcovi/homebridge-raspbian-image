@@ -31,8 +31,8 @@ fi
 echo "chromium-browser $URL $FLAGS --window-size=$WINDOW_SIZE" >> /usr/local/lib/kiosk/xstart
 
 # make sure any lock on the Chromium profile is released
-chown -R chromium:chromium /usr/src/app/settings
-rm -f /usr/src/app/settings/SingletonLock
+chown -R chromium:chromium /usr/local/lib/kiosk/settings
+rm -f /usr/local/lib/kiosk/settings/SingletonLock
 
 # run script as pi user
 su -c "export DISPLAY=:0 && startx /usr/local/lib/kiosk/xstart $CURSOR" - chromium

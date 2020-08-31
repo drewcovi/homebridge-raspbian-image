@@ -37,7 +37,7 @@ if [[ -z ${FLAGS+x} ]]
       --enable-gpu-rasterization \
       --force-gpu-rasterization \
       --autoplay-policy=no-user-gesture-required \
-      --user-data-dir=/usr/src/app/settings \
+      --user-data-dir=/usr/local/lib/kiosk/settings \
       --enable-features=WebRTC-H264WithOpenH264FFmpeg"
 
 fi

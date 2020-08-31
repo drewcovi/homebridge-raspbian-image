@@ -10,8 +10,6 @@ WorkingDirectory=/usr/local/lib/kiosk
 Type=simple
 ExecStart=/usr/local/sbin/kiosk
 Restart=on-abort
-User=chromium
-Group=chromium
 
 [Install]
 WantedBy=graphical.target
