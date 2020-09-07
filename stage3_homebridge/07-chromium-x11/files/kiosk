@@ -13,9 +13,10 @@ if [ "$(vcgencmd get_mem gpu | grep -o '[0-9]\+')" -lt 128 ]
     echo -e "\033[91mWARNING: GPU MEMORY TOO LOW"
 fi
 
-sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+#sed -i -e 's/console/anybody/g' /etc/X11/Xwrapper.config
+echo "allowed_users=anybody" >/etc/X11/Xwrapper.config
 echo "needs_root_rights=yes" >> /etc/X11/Xwrapper.config
-dpkg-reconfigure xserver-xorg-legacy
+#dpkg-reconfigure xserver-xorg-legacy
 
 #Set whether to run Chromium in config mode or not
 if [ ! -z ${CONFIG_MODE+x} ] && [ "$CONFIG_MODE" -eq "1" ]
