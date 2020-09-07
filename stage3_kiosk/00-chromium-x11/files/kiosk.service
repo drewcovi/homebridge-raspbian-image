@@ -1,0 +1,15 @@
+[Unit]
+Description=Chromium Kiosk
+Wants=graphical.target
+After=graphical.target homebridge.service
+
+[Service]
+Environment=DISPLAY=:0.0
+Environment=XAUTHORITY=/home/chromium/.Xauthority
+WorkingDirectory=/usr/local/lib/kiosk
+Type=simple
+ExecStart=/usr/local/sbin/kiosk
+Restart=on-abort
+
+[Install]
+WantedBy=graphical.target
